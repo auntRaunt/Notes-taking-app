@@ -1,0 +1,13 @@
+{{#each items}}
+
+<div class="note">
+    <form action="/delete" method="post">
+        <h1>{{this.title}}</h1>
+        <p>{{this.content}}</p>
+        <button type="submit">Delete</button>
+        <input type="hidden" name="itemName" value="{{this.title}}"></input>
+    </form>
+</div>
+
+
+{{/each}}
