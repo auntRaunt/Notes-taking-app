@@ -17,7 +17,6 @@ mongoose.connect("mongodb://localhost:27017/notesDB", {
   useNewUrlParser: true,
 });
 
-
 const noteSchema = {
   title: String,
   content: String,
@@ -68,6 +67,17 @@ app.post("/", (req, res) => {
 app.post("/delete", (req, res) => {
   console.log(req.body);
   //find the item name in db, and delete it, and redirect to "/" again
+  Notes.findOneAndDelete(
+    {
+      title: req.body.itemName,
+    },
+    function (err) {
+      if (!err) {
+        console.log("Successfully deleted checked item");
+        res.redirect("/");
+      }
+    }
+  );
 });
 
 app.listen(port, () => {
