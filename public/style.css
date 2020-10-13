@@ -76,3 +76,10 @@ form#form-create button {
   cursor: pointer;
   outline: none;
 }
+
+input,
+textarea {
+  border: none;
+  /* background: transparent; */
+  outline: none;
+}

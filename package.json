@@ -13,9 +13,11 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.1.0",
+    "knex": "^0.21.6",
     "md5": "^2.3.0",
     "mongoose": "^5.10.7",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "pg": "^8.4.1"
   },
   "devDependencies": {
     "handlebars": "^4.5.0"

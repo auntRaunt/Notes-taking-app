@@ -1,9 +1,9 @@
 {{#each items}}
 
 <div class="note">
-    <form action="/delete" method="post">
-        <h1>{{this.title}}</h1>
-        <p>{{this.content}}</p>
+    <form action="/note/delete" method="post">
+        <h1><input type="text" name="" class="i-title" value="{{this.title}}" onchange="this.form.submit()"></h1>
+        <p><textarea class="i-content" name="content" rows="3" onchange="this.form.submit()">{{this.content}}</textarea></p>
         <button type="submit">Delete</button>
         <input type="hidden" name="itemName" value="{{this.title}}"></input>
     </form>
