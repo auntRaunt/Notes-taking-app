@@ -4,9 +4,11 @@ const db = require("../../database");
 
 router.get("/", (req, res) => {
   //Get the data from DB and render back
-  db.select("title", "content")
+  db.select("id", "title", "content")
     .from("notes")
+    .orderBy("id")
     .then((data) => {
+      // console.log(data);
       res.render("showNote-db", { items: data });
     });
 });
@@ -28,8 +30,22 @@ router.post("/delete", (req, res) => {
     .then(() => {
       res.redirect("/note");
     });
-
   //find the item name in db, and delete it, and redirect to "/" again
+});
+
+//if title change OR content change, after lost focus(blur()), send to update route, change the back
+router.post("/update/:id", (req, res) => {
+  const { title, content } = req.body;
+  db("notes")
+    .where("id", "=", req.params.id)
+    .update({
+      title: title,
+      content: content,
+    })
+    .orderBy("id")
+    .then(() => {
+      res.redirect("/note");
+    });
 });
 
 module.exports = router;
