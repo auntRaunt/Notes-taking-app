@@ -4,7 +4,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const hb = require("express-handlebars");
 const mongoose = require("mongoose");
-const noteRoute = require('./router/note/note');
+const noteRoute = require("./router/note/note");
 
 const port = process.env.PORT || 3000;
 
@@ -12,7 +12,7 @@ app.engine("handlebars", hb({ defaultLayout: "main" }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "handlebars");
 app.use(express.static("public"));
-app.use('/note', noteRoute);
+app.use("/note", noteRoute);
 
 //connect to mongodb
 mongoose.connect("mongodb://localhost:27017/notesDB", {
@@ -80,10 +80,6 @@ app.post("/delete", (req, res) => {
       }
     }
   );
-});
-
-app.post("/update", (req, res) => {
-  const {title, content} = req.body;
 });
 
 app.listen(port, () => {

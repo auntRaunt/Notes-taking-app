@@ -1,7 +1,20 @@
+<header>
+    <h1>Welcome, {{user}}</h1>
+</header>
+
+<div>
+    <form id="form-create" action="/note/{{user}}" method="POST">
+        <input name="title" type="text" placeholder="Title">
+        <textarea name="content" rows="3" placeholder="Take a note"></textarea>
+        <button>Add</button>
+    </form>
+</div>
+
+
 {{#each items}}
 
 <div class="note">
-    <form action="/note/delete" method="post">
+    <form action="/note/{{this.username}}/delete" method="post">
         <h1><input id="{{this.id}}-title" type="text" name="" class="i-title" value="{{this.title}}"
                 onchange="sayHi(this)"></h1>
         <p><textarea id="{{this.id}}-content" class="i-content" name="content" rows="3"
@@ -9,7 +22,8 @@
         </p>
         <button type="submit">Delete</button>
         <input type="hidden" name="itemName" value="{{this.title}}"></input>
-        <input type="hidden" name="editId" value="{{this.id}}" class="hiddenId"></input>
+        <input type="hidden" id="noteUser" name="noteUser" value="{{this.username}}" class="hiddenId"></input>
+        <input type="hidden" name="noteId" value="{{this.id}}" class="hiddenId"></input>
     </form>
 </div>
 
