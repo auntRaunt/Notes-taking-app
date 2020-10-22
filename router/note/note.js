@@ -5,7 +5,6 @@ const db = require("../../database");
 router.get("/:user", (req, res) => {
   //Get the data from DB and render back
   const user = req.params.user;
-
   db.select("id", "title", "content", "username")
     .from("notes")
     .where("username", "=", user)

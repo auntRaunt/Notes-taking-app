@@ -4,6 +4,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const hb = require("express-handlebars");
 const noteRoute = require("./router/note/note");
+const db = require("./database");
 
 const port = process.env.PORT || 3000;
 
@@ -13,7 +14,7 @@ app.set("view engine", "handlebars");
 app.use(express.static("public"));
 app.use("/note", noteRoute);
 
-const db = require("./database");
+
 
 app.get("/", (req, res) => {
   res.render("login", { layout: "main2" });
